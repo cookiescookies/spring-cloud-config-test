@@ -10,7 +10,15 @@ spring:
 server:
   port: 3355
 a:
- b: a
+ b: dev
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: customer-client-${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka/
 ---
 spring:
   profiles: test
@@ -19,4 +27,12 @@ spring:
 server:
   port: 3366
 a:
- b: b
+ b: test
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: customer-client-${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka/
